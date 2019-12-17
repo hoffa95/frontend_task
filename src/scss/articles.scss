@@ -1,3 +1,5 @@
+$minBodyHeight:40em;
+$lineMargin:4em;
 .articles-container {
     overflow:hidden;
   .preview-header {
@@ -10,6 +12,11 @@
         margin-left: 10px;
       }
     }
+    .avatar{
+      width: 2em;
+      height: 2em;
+      align-self: center;
+    }
   }
   a:hover {
     text-decoration: none;
@@ -19,10 +26,11 @@
       color: inherit;
   }
   .line{
-      margin-top: 60px;
+      margin-top: $lineMargin;
   }
 }
 .article-body {
-    min-height: 600px;
+    min-height: $minBodyHeight;
     text-align: justify;
+    word-wrap: break-word;
 }
