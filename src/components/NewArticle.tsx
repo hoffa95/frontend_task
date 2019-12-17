@@ -17,13 +17,12 @@ const NewArticle: React.FC<RouteComponentProps> = ({ history }) => {
   const { slug } = useParams();
 
   useEffect(() => {
-    console.log(slug)
     if (slug !== undefined) {
       setIsEditMode(true);
       getArticle(slug!);
     }
-  }, [])
-  console.log(article);
+  }, []);
+
   return (
     <div>
       <MainNavbar />
@@ -57,7 +56,7 @@ const NewArticle: React.FC<RouteComponentProps> = ({ history }) => {
                 />
               </div>
               <div>
-                <Field name="body" style={{ width: "100%", margin: 10, padding: 10 }} aria-label="minimum height" rows={3} placeholder="Body ..." as={TextareaAutosize} />
+                <Field className ="mytextarea "name="body" aria-label="minimum height" rows={3} placeholder="Body ..." maxLength="255" as={TextareaAutosize} />
               </div>
               <div>
                 <Button type="submit" variant="contained" color="primary" >{isEditMode ? "UPDATE" : "ADD"}</Button>

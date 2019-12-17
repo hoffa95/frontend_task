@@ -11,7 +11,6 @@ const store = createStore<StoreModel>({
     fetchArticles: thunk(async actions => {
       try {
         const res = await axios.get('/api/articles');
-        console.log(res);
         const article = res.data.articles;
         actions.setArticleList(article);
       } catch(err){
@@ -21,9 +20,9 @@ const store = createStore<StoreModel>({
     getArticle: thunk(async (actions, slug) => {
       try {
         const res=await axios.get(`/api/articles/${slug}`);
-        console.log(res);
         const article = res.data.article;
         actions.setCurrentArticle(article);
+        console.log(article);
       } catch(err){
         console.log(err);
       }
@@ -38,9 +37,7 @@ const store = createStore<StoreModel>({
               "body": article.body,
             }
           }, { headers: { "Authorization": `Bearer ${token}` } });
-          console.log(res);
-          if (res && res.data) {
-          }
+
         } catch(err){
           console.log(err);
         }
@@ -60,7 +57,6 @@ const store = createStore<StoreModel>({
           
         }catch(err){
           console.log(err);
-
         }
     }),
     removeArticle: action((state, slug) => {
@@ -75,9 +71,8 @@ const store = createStore<StoreModel>({
             "body": article.body,
           }
         }, { headers: { "Authorization": `Bearer ${token}` } });
-        console.log(res)
       }catch(err){
-        console.log(err)
+        console.log(err);
       }
     })
   },
@@ -95,20 +90,21 @@ const store = createStore<StoreModel>({
           actions.setUser(res.data.user);
             localStorage.setItem('token', res.data.user.token);
         }catch(err){
+          console.log(err);
           throw (err.response.data.errors);
         }
     }),
     setUser: action((state, user) => {
       state.user = user;
       localStorage.setItem('username', user.username);
-      console.log(state.user);
+
     }),
     getUser: thunk(async (actions) => {
       try{
         const res = await axios.get('/api/user', { headers: { "Authorization": `Bearer ${token}` }, });
         actions.setUser(res.data.user);
       }catch(err){
-        console.log(err)
+        console.log(err);
             }
     }),
     updateUser: thunk(async (actions, user, password) => {
@@ -122,7 +118,7 @@ const store = createStore<StoreModel>({
             "username": user.username,
           }
         }, { headers: { "Authorization": `Bearer ${token}` } });
-        console.log(res);
+
       }catch(err){
         console.log(err);
       }
@@ -139,6 +135,7 @@ const store = createStore<StoreModel>({
           });
           actions.setUser(res.data.user);
         }catch(err){
+          console.log(err);
           throw (err.response.data._errors);
         }
     }),

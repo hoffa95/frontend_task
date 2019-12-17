@@ -1,28 +1,21 @@
 import React, { useEffect } from 'react';
 import ArticlePreview from './ArticlePreview';
 import { useStoreActions, useStoreState } from '../hooks';
-import { Article as IArticle } from '../model';
+import { Article } from '../model';
 
-const Articles = (props: any) => {
+const Articles = ()=> {
   const fetchArticles = useStoreActions(actions => actions.articles.fetchArticles);
-  const articles: IArticle[] = useStoreState(state => state.articles.articleList);
-  console.log(articles);
+  const articles: Article[] = useStoreState(state => state.articles.articleList);
 
   useEffect(() => {
     fetchArticles();
-  }, [])
+  }, []);
+
   return (<div className="main-container">{
     articles.map((article, idx) => (
-      <ArticlePreview key={idx} article={article} />
-    )
-    )
+      <ArticlePreview key={idx} article={article} />))
   }
-
-  </div>
-
-  )
-
-
+  </div>)
 }
 
 export default Articles;

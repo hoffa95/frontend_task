@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useStoreState } from '../hooks';
 import {
   Collapse,
   Navbar,
@@ -11,10 +10,8 @@ import {
   Container
 } from 'reactstrap';
 
-const MainNavbar = (props: any) => {
+const MainNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const user = useStoreState(state => state.user.user);
-  console.log('NAV USER', user.username);
   const toggle = () => {
     setIsOpen(!isOpen);
   }
