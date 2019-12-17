@@ -1,0 +1,28 @@
+.articles-container {
+    overflow:hidden;
+  .preview-header {
+    display: flex;
+    .author-container {
+      display: "inline-block";
+      .author-block {
+        display: block;
+        text-align: left;
+        margin-left: 10px;
+      }
+    }
+  }
+  a:hover {
+    text-decoration: none;
+    color:inherit;
+  }
+  a{
+      color: inherit;
+  }
+  .line{
+      margin-top: 60px;
+  }
+}
+.article-body {
+    min-height: 600px;
+    text-align: justify;
+}

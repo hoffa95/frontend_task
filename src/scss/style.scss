@@ -1,0 +1,46 @@
+$page-header-color: #212529;
+$page-header-bgcolor: lightgrey;
+$small-space:0.8em;
+$header-spacing: 1em;
+.App {
+  text-align: center;
+  overflow:hidden;
+}
+
+.main-container {
+  width: 40%;
+  margin: auto;
+}
+
+.grey {
+  color: grey;
+}
+.small {
+  font-size: small;
+}
+
+.flex {
+  display: flex;
+}
+.bold {
+  font-weight: bold;
+}
+.left {
+  float: left;
+}
+.page-header {
+  background:$page-header-bgcolor;
+  color:$page-header-color;
+  padding: $header-spacing;
+}
+.alert-text {
+  color: red;
+}
+.mytextfield{
+  width: 100% !important;
+  margin: $small-space !important;
+}
+
+button{
+    margin:$small-space !important;
+}
